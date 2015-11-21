@@ -50,12 +50,14 @@ public class playerBehaviour : MonoBehaviour {
 	}
 
 	void Update() {
-		if (Input.GetKeyDown (KeyCode.Space)) {
+        float rightTrig = Input.GetAxisRaw("Right Trigger");
+
+		if (Input.GetKeyDown (KeyCode.Space) || rightTrig == 1 ) {
 			if (!takeItem ()) {
 				Debug.Log ("No item to catch...");
 			}
 		}
-		if (Input.GetKeyUp (KeyCode.Space)) {
+		if (Input.GetKeyUp (KeyCode.Space) || rightTrig == 0) {
 			if (dropItem()) {
 				Debug.Log("Item dropped");
 			} else {

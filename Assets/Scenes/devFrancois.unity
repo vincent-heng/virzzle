@@ -98,7 +98,7 @@ GameObject:
   - 23: {fileID: 68659402}
   m_Layer: 8
   m_Name: Plane (5)
-  m_TagString: Untagged
+  m_TagString: world
   m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -526,7 +526,7 @@ GameObject:
   - 23: {fileID: 535333225}
   m_Layer: 8
   m_Name: Plane (2)
-  m_TagString: Untagged
+  m_TagString: world
   m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -599,7 +599,7 @@ GameObject:
   - 23: {fileID: 637545616}
   m_Layer: 8
   m_Name: Plane (3)
-  m_TagString: Untagged
+  m_TagString: world
   m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -746,11 +746,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 429664, guid: b710f9246228291449b48e1b4014c008, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -.550000012
       objectReference: {fileID: 0}
     - target: {fileID: 429664, guid: b710f9246228291449b48e1b4014c008, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.83000004
       objectReference: {fileID: 0}
     - target: {fileID: 429664, guid: b710f9246228291449b48e1b4014c008, type: 2}
       propertyPath: m_LocalPosition.z
@@ -808,7 +808,7 @@ GameObject:
   - 23: {fileID: 794050703}
   m_Layer: 8
   m_Name: Plane (1)
-  m_TagString: Untagged
+  m_TagString: world
   m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -912,6 +912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   armLength: 20
+  dropRotationForce: 0
   handedObject: {fileID: 0}
 --- !u!114 &1030504838
 MonoBehaviour:
@@ -954,7 +955,7 @@ GameObject:
   - 23: {fileID: 1765919789}
   m_Layer: 8
   m_Name: Plane (4)
-  m_TagString: Untagged
+  m_TagString: world
   m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1226,7 +1227,7 @@ GameObject:
   - 23: {fileID: 2024750631}
   m_Layer: 8
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: world
   m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
