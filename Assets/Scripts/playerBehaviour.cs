@@ -18,7 +18,7 @@ public class playerBehaviour : MonoBehaviour {
 
 				Transform parent = GameObject.Find("Visor").transform;
 				handedObject.transform.SetParent(parent, false);
-				handedObject.transform.localPosition = new Vector3(0f,-0.3f,0f);
+				handedObject.transform.localPosition = new Vector3(0f,-0.3f,-9f);
 
 				return true;
 			}
