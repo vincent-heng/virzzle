@@ -1,10 +1,11 @@
-﻿ using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
 public class playerBehaviour : MonoBehaviour {
 	public float armLength = 20;
 	public GameObject handedObject = new GameObject();
+
 
 	private bool takeItem() {
 		RaycastHit hit;
@@ -14,7 +15,7 @@ public class playerBehaviour : MonoBehaviour {
 			Collider col = hit.collider;
 			if (col.tag == "key") {
 				handedObject = col.gameObject;
-				handedObject.SetActive(false);
+				//handedObject.SetActive(false);
 				return true;
 			}
 		}
