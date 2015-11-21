@@ -27,21 +27,12 @@ public class playerMovementScript : MonoBehaviour {
 
     void OnCollisionEnter( Collision col)
     {
-<<<<<<< HEAD
         Debug.Log("collision");
-        if(col.gameObject.tag== "world")
+        if (col.gameObject.tag== "world")
         {
             GetComponent<Rigidbody>().velocity = Vector3.zero;
             Debug.Log("collision");
         }
-=======
-		 if (col.gameObject.tag == "world") {
-			GetComponent<Rigidbody> ().velocity = Vector3.zero;
-		} else {
-			print (col.gameObject.tag);
-		}
-
->>>>>>> origin/master
     }
 
 
