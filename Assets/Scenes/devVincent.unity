@@ -161,6 +161,7 @@ MonoBehaviour:
   armLength: 20
   dropRotationForce: 10
   handedObject: {fileID: 0}
+  triggeredWithKeyboard: 0
 --- !u!1 &90537101
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,7 +385,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 469596, guid: 3103903ffedfe76479dcb6c0d2545afa, type: 2}
       propertyPath: m_LocalPosition.z
-      value: .100000001
+      value: .899999976
       objectReference: {fileID: 0}
     - target: {fileID: 469596, guid: 3103903ffedfe76479dcb6c0d2545afa, type: 2}
       propertyPath: m_LocalRotation.x
@@ -405,6 +406,18 @@ Prefab:
     - target: {fileID: 469596, guid: 3103903ffedfe76479dcb6c0d2545afa, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 469596, guid: 3103903ffedfe76479dcb6c0d2545afa, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 469596, guid: 3103903ffedfe76479dcb6c0d2545afa, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 469596, guid: 3103903ffedfe76479dcb6c0d2545afa, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3103903ffedfe76479dcb6c0d2545afa, type: 2}

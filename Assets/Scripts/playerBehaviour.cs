@@ -6,6 +6,7 @@ public class playerBehaviour : MonoBehaviour {
 	public float armLength = 20;
 	public float dropRotationForce;
 	public GameObject handedObject;
+	public bool triggeredWithKeyboard;
 
 	/**
 	 * Returns true if catching an item
@@ -25,8 +26,10 @@ public class playerBehaviour : MonoBehaviour {
 				Transform parent = GameObject.Find("Visor").transform;
 				handedObject.transform.SetParent(parent, true);
 				handedObject.GetComponent<Rigidbody>().isKinematic = true;
-				float forwardDecalage = -7f;
-				float upDecalage = -1.5f;
+				float forwardSizeMod = col.transform.lossyScale.z * 13;
+				float forwardDecalage = -7f + forwardSizeMod;
+				float upSizeMod = col.transform.lossyScale.y * -11;
+				float upDecalage = -1.5f + upSizeMod;
 				handedObject.transform.localPosition = GameObject.Find("CenterEyeAnchor").transform.forward*forwardDecalage + GameObject.Find("CenterEyeAnchor").transform.up*upDecalage;
 
 				return true; // Just took an item
@@ -55,9 +58,11 @@ public class playerBehaviour : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.Space) || rightTrig == 1 ) {
 			if (!takeItem ()) {
 				Debug.Log ("No item to catch...");
+			} else {
+				triggeredWithKeyboard = true;
 			}
 		}
-		if (Input.GetKeyUp (KeyCode.Space) || rightTrig == 0) {
+		if (Input.GetKeyUp (KeyCode.Space) || (rightTrig == 0 && handedObject != null && !triggeredWithKeyboard)) {
 			if (dropItem()) {
 				Debug.Log("Item dropped");
 			} else {
