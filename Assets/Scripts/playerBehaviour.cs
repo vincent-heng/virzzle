@@ -15,7 +15,10 @@ public class playerBehaviour : MonoBehaviour {
 			Collider col = hit.collider;
 			if (col.tag == "key") {
 				handedObject = col.gameObject;
-				handedObject.SetActive(false);
+
+				Transform parent = GameObject.Find("Visor").transform;
+				handedObject.transform.SetParent(parent, false);
+				handedObject.transform.localPosition = new Vector3(0,0,0);
 				return true;
 			}
 		}
