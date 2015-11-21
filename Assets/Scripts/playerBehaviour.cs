@@ -22,7 +22,7 @@ public class playerBehaviour : MonoBehaviour {
 		Ray playerRay = new Ray(transform.position, playerOrientation);
 		if (Physics.Raycast (playerRay, out hit, armLength)) {
 			Collider col = hit.collider;
-			if (col.tag == "key") {
+			if (col.tag == "key" || col.tag == "randomItem") {
 				handedObject = col.gameObject;
 
 				Transform parent = visor.transform;
