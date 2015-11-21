@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class playerMovementScript : MonoBehaviour {
-<<<<<<< HEAD
+public class playerMovementScript : MonoBehaviour
+{
 
     public float p_takeOffForce;
     public float p_wallRunSpeed;
@@ -10,7 +10,7 @@ public class playerMovementScript : MonoBehaviour {
     public float p_rotationForce;
 
     //collision management
-   public int m_currentTrig = 0;
+    public int m_currentTrig = 0;
 
     //player orientation
     Transform m_playerOrientation;
@@ -24,7 +24,8 @@ public class playerMovementScript : MonoBehaviour {
     public float p_roughThreshold;
 
 
-	void Start () {
+    void Start()
+    {
 
         //maybe initialise the current trig there with a sphere cast
 
@@ -34,10 +35,11 @@ public class playerMovementScript : MonoBehaviour {
 
 
     }
-	
-	void Update () {
+
+    void Update()
+    {
         handlePlayerRotation();
-	}
+    }
 
     void FixedUpdate()
     {
@@ -48,9 +50,9 @@ public class playerMovementScript : MonoBehaviour {
     void handleRoughHeadMoves()
     {
         m_timePassed += Time.fixedDeltaTime;
-        if(m_timePassed > p_timeInterval)
+        if (m_timePassed > p_timeInterval)
         {
-            if( !headbangCooldown )
+            if (!headbangCooldown)
             {
                 float distance = Vector3.Distance(m_playerOrientation.forward, m_orientAtBegin);
                 if (distance > p_roughThreshold)
@@ -101,7 +103,7 @@ public class playerMovementScript : MonoBehaviour {
 
     void handleCapsuleCollider()
     {
-        if(m_currentTrig > 0)
+        if (m_currentTrig > 0)
         {
             m_playerRigidbody.freezeRotation = true;
         }
@@ -112,14 +114,14 @@ public class playerMovementScript : MonoBehaviour {
         }
     }
 
-    void OnTriggerEnter( Collider other)
+    void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "world")
+        if (other.tag == "world")
         {
             m_currentTrig++;
             //temp disable for torque
             //handleCapsuleCollider();
-        }     
+        }
     }
 
     void OnTriggerStay(Collider other)
@@ -139,102 +141,10 @@ public class playerMovementScript : MonoBehaviour {
             //handleCapsuleCollider();
             Debug.Log("decrement trig:" + m_currentTrig);
 
-            if( m_currentTrig == 0)
+            if (m_currentTrig == 0)
             {
                 m_playerRigidbody.AddForce(m_playerOrientation.forward * p_takeOffForce);
             }
         }
     }
 }
-=======
-	
-	public float p_forceNoWall;
-	public float p_speedAgainstWall;
-	public float p_speedDampenfactor;
-	
-	//collision management
-	int m_currentTrig = 0;
-	
-	//player orientation
-	Transform m_playerOrientation;
-	Rigidbody m_playerRigidbody;
-	
-	void Start () {
-		
-		//maybe initialise the current trig there with a sphere cast
-		
-		m_playerOrientation = GameObject.Find("CenterEyeAnchor").transform;
-		m_playerRigidbody = GetComponent<Rigidbody>();
-	}
-	
-	void Update () {
-		if( m_currentTrig != 0 )
-		{
-			
-			
-		}
-	}
-	
-	void handleForwardMove()
-	{
-		if (Input.GetButton("A"))
-		{
-			Debug.Log("input a");
-			Vector3 orient = m_playerOrientation.forward;
-			/*GetComponent<Rigidbody>().AddForce(orient.normalized * force);*/
-			m_playerRigidbody.velocity = orient * p_speedAgainstWall;
-		}
-		else
-		{
-			m_playerRigidbody.velocity = Vector3.Lerp(m_playerRigidbody.velocity, Vector3.zero, p_speedDampenfactor);
-			//dampen velocity
-		}
-	}
-	
-	void handleCapsuleCollider()
-	{
-		if(m_currentTrig > 0)
-		{
-			Debug.Log("freezerot");
-			m_playerRigidbody.freezeRotation = true;
-		}
-		else
-		{
-			m_playerRigidbody.freezeRotation = false;
-		}
-	}
-	
-	void OnTriggerEnter( Collider other)
-	{
-		if(other.tag == "world")
-		{
-			m_currentTrig++;
-			handleCapsuleCollider();
-		}     
-	}
-	
-	void OnTriggerStay(Collider other)
-	{
-		if (other.tag == "world")
-		{
-			handleForwardMove();
-		}
-	}
-	
-	void OnTriggerleave(Collider other)
-	{
-		if (other.tag == "world")
-		{
-			m_currentTrig--;
-			handleCapsuleCollider();
-			
-			
-			if( m_currentTrig == 0)
-			{
-				//addforce to the player
-				m_playerRigidbody.AddForce(m_playerOrientation.forward * p_forceNoWall);
-			}
-		}
-	}
-}
->>>>>>> origin/master
