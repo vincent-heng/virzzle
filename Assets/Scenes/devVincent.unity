@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   armLength: 20
+  handedObject: {fileID: 0}
 --- !u!1 &90537101
 GameObject:
   m_ObjectHideFlags: 0
