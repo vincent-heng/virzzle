@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class playerBehaviour : MonoBehaviour {
 	public float armLength = 20;
-	private GameObject handedObject = new GameObject();
+	public GameObject handedObject = new GameObject();
 
 	private bool takeItem() {
 		RaycastHit hit;

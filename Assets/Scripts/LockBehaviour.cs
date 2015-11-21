@@ -7,9 +7,9 @@ public class LockBehaviour : MonoBehaviour {
 
 	void OnCollisionEnter( Collision col)
 	{
-		if (col.gameObject.tag== "key")
+		if (col.gameObject.tag== "Player")
 		{
-			tryToOpen(col.gameObject);
+			tryToOpen(GameObject.Find ("Player").GetComponent<playerBehaviour>().handedObject);
 		}
 	}
 
