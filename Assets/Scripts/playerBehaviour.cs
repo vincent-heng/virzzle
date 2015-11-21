@@ -34,4 +34,22 @@ public class playerBehaviour : MonoBehaviour {
 			}
 		}
 	}
+
+	void OnTriggerEnter( Collider other)
+	{
+		if(other.tag == "door")
+		{
+			other.GetComponent<doorBehavior>().openDoor();
+		}     
+	}
+
+	
+	void OnTriggerleave(Collider other)
+	{
+		if (other.tag == "door")
+		{
+			other.GetComponent<doorBehavior>().closeDoor();
+
+		}
+	}
 }

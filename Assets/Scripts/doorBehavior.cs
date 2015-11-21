@@ -14,11 +14,13 @@ public class doorBehavior : MonoBehaviour {
 	}
 
 	public void openDoor(){
-		isClosed = false;
+		if (!isLocked)
+			isClosed = false;
 	}
 
 	public void closeDoor(){
-		isClosed = true;
+		if (!isLocked)
+			isClosed = true;
 	}
 
 
