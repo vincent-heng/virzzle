@@ -20,8 +20,7 @@ public class playerMovementScript : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.S))
 		{
 			Vector3 orient = GameObject.Find("CenterEyeAnchor").transform.forward;
-			GetComponent<Rigidbody>().AddForce(orient.normalized * force*(-1));
-			
+			GetComponent<Rigidbody>().AddForce(orient.normalized * force*(-1));			
 		}
 	}
 
@@ -33,8 +32,7 @@ public class playerMovementScript : MonoBehaviour {
             GetComponent<Rigidbody>().velocity = Vector3.zero;
             Debug.Log("collision");
         }
+
     }
-
-
 
 }
