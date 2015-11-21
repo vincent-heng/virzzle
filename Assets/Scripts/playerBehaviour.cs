@@ -15,10 +15,11 @@ public class playerBehaviour : MonoBehaviour {
 			Collider col = hit.collider;
 			if (col.tag == "key") {
 				handedObject = col.gameObject;
+
 				Transform parent = GameObject.Find("Visor").transform;
 				handedObject.transform.SetParent(parent, false);
 				handedObject.transform.localPosition = new Vector3(0f,-0.3f,0f);
-				//handedObject.SetActive(false);
+
 				return true;
 			}
 		}
@@ -32,6 +33,24 @@ public class playerBehaviour : MonoBehaviour {
 			} else {
 				Debug.Log ("No item to catch...");
 			}
+		}
+	}
+
+	void OnTriggerEnter( Collider other)
+	{
+		if(other.tag == "door")
+		{
+			other.GetComponent<doorBehavior>().openDoor();
+		}     
+	}
+
+	
+	void OnTriggerleave(Collider other)
+	{
+		if (other.tag == "door")
+		{
+			other.GetComponent<doorBehavior>().closeDoor();
+
 		}
 	}
 }

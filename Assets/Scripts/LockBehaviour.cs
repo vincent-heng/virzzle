@@ -16,7 +16,7 @@ public class LockBehaviour : MonoBehaviour {
 	// a modifier plus tard
 	public void tryToOpen (GameObject o){
 		if (key.Equals (o)) {
-			door.SetActive(false);
+			door.GetComponent<doorBehavior>().unlockDoor();
 		} else {
 
 		}
