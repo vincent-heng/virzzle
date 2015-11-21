@@ -70,22 +70,4 @@ public class playerBehaviour : MonoBehaviour {
 			}
 		}
 	}
-
-	void OnCollisionEnter( Collision other)
-	{
-		if(other.collider.tag == "door")
-		{
-			other.collider.GetComponent<doorBehavior>().openDoor();
-		}     
-	}
-
-	
-	void OnCollisionExit(Collision other)
-	{
-		if (other.collider.tag == "door")
-		{
-			other.collider.GetComponent<doorBehavior>().closeDoor();
-
-		}
-	}
 }
