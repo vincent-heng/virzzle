@@ -16,14 +16,25 @@ public class playerMovementScript : MonoBehaviour {
             Vector3 orient = GameObject.Find("CenterEyeAnchor").transform.forward;
             GetComponent<Rigidbody>().AddForce(orient.normalized * force);
 
-        }
+		}
+		if (Input.GetKeyDown(KeyCode.S))
+		{
+			Vector3 orient = GameObject.Find("CenterEyeAnchor").transform.forward;
+			GetComponent<Rigidbody>().AddForce(orient.normalized * force*(-1));
+			
+		}
 	}
 
     void OnCollisionEnter( Collision col)
     {
-        if(col.gameObject.tag== "world")
-        {
-            GetComponent<Rigidbody>().velocity = Vector3.zero;
-        }
+		 if (col.gameObject.tag == "world") {
+			GetComponent<Rigidbody> ().velocity = Vector3.zero;
+		} else {
+			print (col.gameObject.tag);
+		}
+
     }
+
+
+
 }
