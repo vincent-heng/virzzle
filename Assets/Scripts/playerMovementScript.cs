@@ -30,14 +30,6 @@ public class playerMovementScript : MonoBehaviour {
 		}
 	}
 
-    /*void OnCollisionEnter( Collision col)
-    {
-        if(col.gameObject.tag== "world")
-        {
-            GetComponent<Rigidbody>().velocity = Vector3.zero;
-            Debug.Log("collision");
-        }
-    }*/
     void handleForwardMove()
     {
         if (Input.GetButton("A"))

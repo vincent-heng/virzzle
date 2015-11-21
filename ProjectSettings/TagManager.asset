@@ -7,7 +7,7 @@ TagManager:
   - key
   - lock
   - world
-  - New Tag
+  - door
   layers:
   - Default
   - TransparentFX
