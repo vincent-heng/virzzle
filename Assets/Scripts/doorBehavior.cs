@@ -3,11 +3,6 @@ using System.Collections;
 
 public class doorBehavior : MonoBehaviour {
 	private bool isLocked = true;
-	private bool isClosed = true;
-
-	void Update (){
-		this.gameObject.SetActive(isClosed);
-	}
 
 	public void unlockDoor(){
 		isLocked = false;
@@ -15,12 +10,12 @@ public class doorBehavior : MonoBehaviour {
 
 	public void openDoor(){
 		if (!isLocked)
-			isClosed = false;
+			GetComponent<MeshRenderer> ().enabled = false;
 	}
 
 	public void closeDoor(){
-		if (!isLocked)
-			isClosed = true;
+		if (!isLocked)			
+			GetComponent<MeshRenderer> ().enabled = true;
 	}
 
 

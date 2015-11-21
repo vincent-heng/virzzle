@@ -36,20 +36,20 @@ public class playerBehaviour : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerEnter( Collider other)
+	void OnCollisionEnter( Collision other)
 	{
-		if(other.tag == "door")
+		if(other.collider.tag == "door")
 		{
-			other.GetComponent<doorBehavior>().openDoor();
+			other.collider.GetComponent<doorBehavior>().openDoor();
 		}     
 	}
 
 	
-	void OnTriggerleave(Collider other)
+	void OnCollisionExit(Collision other)
 	{
-		if (other.tag == "door")
+		if (other.collider.tag == "door")
 		{
-			other.GetComponent<doorBehavior>().closeDoor();
+			other.collider.GetComponent<doorBehavior>().closeDoor();
 
 		}
 	}
