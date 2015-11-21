@@ -21,9 +21,11 @@ public class playerMovementScript : MonoBehaviour {
 
     void OnCollisionEnter( Collision col)
     {
+        Debug.Log("collision");
         if(col.gameObject.tag== "world")
         {
             GetComponent<Rigidbody>().velocity = Vector3.zero;
+            Debug.Log("collision");
         }
     }
 }
