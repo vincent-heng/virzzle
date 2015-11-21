@@ -4,7 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - key
+  - lock
   - world
+  - New Tag
   layers:
   - Default
   - TransparentFX
