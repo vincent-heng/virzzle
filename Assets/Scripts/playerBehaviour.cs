@@ -15,7 +15,7 @@ public class playerBehaviour : MonoBehaviour {
 			Collider col = hit.collider;
 			if (col.tag == "key") {
 				handedObject = col.gameObject;
-				//handedObject.SetActive(false);
+				handedObject.SetActive(false);
 				return true;
 			}
 		}
