@@ -343,7 +343,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 15
+  m_AngularDrag: 1.5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -383,7 +383,7 @@ MonoBehaviour:
   eyeTextureFormat: 7
   eyeTextureAntiAliasing: 2
   eyeTextureDepth: 24
-  usePositionTracking: 1
+  usePositionTracking: 0
   timeWarp: 1
   freezeTimeWarp: 0
   resetTrackerOnLoad: 1
@@ -400,17 +400,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7f8dd302ee34fe47a02d18cfa51643b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  p_forceNoWall: 10
-  p_speedAgainstWall: 2.5
-  p_speedDampenfactor: 0
+  p_takeOffForce: 10
+  p_wallRunSpeed: 2.5
+  p_wallRunSpeedDampenFactor: .0500000007
+  p_rotationForce: 6
+  m_currentTrig: 0
+  p_timeInterval: .100000001
+  p_roughThreshold: .300000012
 --- !u!135 &13532828
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 197970}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 1fe04c08f614b3c4dbb02ba93ca3a3b9, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: .5
@@ -434,9 +438,9 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 197970}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: .25
+  m_Radius: .75
   m_Height: .75
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
