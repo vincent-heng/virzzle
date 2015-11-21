@@ -7,6 +7,8 @@ public class playerBehaviour : MonoBehaviour {
 	public float dropRotationForce;
 	public GameObject handedObject;
 	public bool triggeredWithKeyboard;
+	private GameObject centerEyeAnchor = GameObject.Find("CenterEyeAnchor");
+	private GameObject visor = GameObject.Find("Visor");
 
 	/**
 	 * Returns true if catching an item
@@ -16,21 +18,21 @@ public class playerBehaviour : MonoBehaviour {
 			return true; // Already handing an item
 		}
 		RaycastHit hit;
-		Vector3 playerOrientation = GameObject.Find("CenterEyeAnchor").transform.forward;
+		Vector3 playerOrientation = centerEyeAnchor.transform.forward;
 		Ray playerRay = new Ray(transform.position, playerOrientation);
 		if (Physics.Raycast (playerRay, out hit, armLength)) {
 			Collider col = hit.collider;
 			if (col.tag == "key") {
 				handedObject = col.gameObject;
 
-				Transform parent = GameObject.Find("Visor").transform;
+				Transform parent = visor.transform;
 				handedObject.transform.SetParent(parent, true);
 				handedObject.GetComponent<Rigidbody>().isKinematic = true;
 				float forwardSizeMod = col.transform.lossyScale.z * 13;
 				float forwardDecalage = -7f + forwardSizeMod;
 				float upSizeMod = col.transform.lossyScale.y * -11;
 				float upDecalage = -1.5f + upSizeMod;
-				handedObject.transform.localPosition = GameObject.Find("CenterEyeAnchor").transform.forward*forwardDecalage + GameObject.Find("CenterEyeAnchor").transform.up*upDecalage;
+				handedObject.transform.localPosition = centerEyeAnchor.transform.forward*forwardDecalage + centerEyeAnchor.transform.up*upDecalage;
 
 				return true; // Just took an item
 			}
@@ -43,7 +45,7 @@ public class playerBehaviour : MonoBehaviour {
 			return false;
 		}
 		handedObject.GetComponent<Rigidbody> ().isKinematic = false;
-		Vector3 playerOrientation = GameObject.Find("CenterEyeAnchor").transform.forward;
+		Vector3 playerOrientation = centerEyeAnchor.transform.forward;
 		handedObject.transform.parent = null;
 		Rigidbody rgbd = handedObject.GetComponent<Rigidbody> ();
 		rgbd.AddForce (playerOrientation.normalized);
