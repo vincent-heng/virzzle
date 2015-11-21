@@ -23,8 +23,11 @@ public class playerBehaviour : MonoBehaviour {
 				handedObject = col.gameObject;
 
 				Transform parent = GameObject.Find("Visor").transform;
-				handedObject.transform.SetParent(parent, false);
-				handedObject.transform.localPosition = new Vector3(0f,-0.1f,-9.3f);
+				handedObject.transform.SetParent(parent, true);
+				handedObject.GetComponent<Rigidbody>().isKinematic = true;
+				float forwardDecalage = -7f;
+				float upDecalage = -1.5f;
+				handedObject.transform.localPosition = GameObject.Find("CenterEyeAnchor").transform.forward*forwardDecalage + GameObject.Find("CenterEyeAnchor").transform.up*upDecalage;
 
 				return true; // Just took an item
 			}
@@ -36,8 +39,9 @@ public class playerBehaviour : MonoBehaviour {
 		if (handedObject == null) {
 			return false;
 		}
+		handedObject.GetComponent<Rigidbody> ().isKinematic = false;
 		Vector3 playerOrientation = GameObject.Find("CenterEyeAnchor").transform.forward;
-		handedObject.transform.SetParent(null, true);
+		handedObject.transform.parent = null;
 		Rigidbody rgbd = handedObject.GetComponent<Rigidbody> ();
 		rgbd.AddForce (playerOrientation.normalized);
 		rgbd.AddTorque ((Vector3.right + Vector3.forward).normalized * dropRotationForce);
