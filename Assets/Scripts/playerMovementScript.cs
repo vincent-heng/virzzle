@@ -11,6 +11,7 @@ public class playerMovementScript : MonoBehaviour
 
     //collision management
     public int m_currentTrig = 0;
+    public int m_currentCol = 0;
 
     //player orientation
     Transform m_playerOrientation;
@@ -34,11 +35,6 @@ public class playerMovementScript : MonoBehaviour
         m_orientAtBegin = m_playerOrientation.forward;
 
 
-    }
-
-    void Update()
-    {
-        handlePlayerRotation();
     }
 
     void FixedUpdate()
@@ -72,21 +68,6 @@ public class playerMovementScript : MonoBehaviour
         }
     }
 
-
-    void handlePlayerRotation()
-    {
-        //si input de l'oculus balancez un momentum
-        //sinon dampen le momentum
-        /*if( Input.GetButtonDown("B"))
-        {
-            Debug.Log("inputb");
-            //m_playerRigidbody.AddRelativeTorque(Vector3.up * p_rotationForce);
-            m_playerRigidbody.AddTorque(Vector3.forward * p_rotationForce);
-        }*/
-        //the angular drag will take care of dampening the rotation
-    }
-
-
     void handleForwardMove()
     {
         if (Input.GetButton("A"))
@@ -101,16 +82,32 @@ public class playerMovementScript : MonoBehaviour
         }
     }
 
-    void handleCapsuleCollider()
+    void handleSphereCollider()
     {
-        if (m_currentTrig > 0)
+        if (m_currentCol > 0)
         {
             m_playerRigidbody.freezeRotation = true;
         }
         else
         {
             m_playerRigidbody.freezeRotation = false;
-            Debug.Log("unfreeze");
+        }
+    }
+
+    void OnCollisionEnter( Collision col)
+    {
+        if (col.gameObject.tag == "world")
+        {
+            m_currentCol++;
+            handleSphereCollider();
+        }
+    }
+    void OnCollisionExit(Collision col)
+    {
+        if (col.gameObject.tag == "world")
+        {
+            m_currentCol--;
+            handleSphereCollider();
         }
     }
 
@@ -119,8 +116,6 @@ public class playerMovementScript : MonoBehaviour
         if (other.tag == "world")
         {
             m_currentTrig++;
-            //temp disable for torque
-            //handleCapsuleCollider();
         }
     }
 
