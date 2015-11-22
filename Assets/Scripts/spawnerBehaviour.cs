@@ -7,16 +7,22 @@ public class spawnerBehaviour : MonoBehaviour {
 	public List<GameObject> spawns = new List<GameObject> ();
 	public float[] coef = new float[3];
 	public int nbItems;
-	public float minX;
-	public float minY;
-	public float minZ;
-	public float maxX;
-	public float maxY;
-	public float maxZ;
+
+
 
 
 	// Use this for initialization
 	void Start () {
+		Vector3 centre = GetComponent<BoxCollider>().center;
+		Vector3 coords = GetComponent<BoxCollider>().size;
+		
+		float minX = centre.x - coords.x / 2;
+		float minY = centre.y - coords.y / 2;
+		float minZ = centre.z - coords.z / 2;
+		float maxX = centre.x + coords.x / 2;
+		float maxY = centre.y + coords.y / 2;
+		float maxZ = centre.z + coords.z / 2;
+
 		int n = Mathf.RoundToInt( Mathf.Sqrt ((nbItems + 1)/2 +1)) +1;
 		float deltaX = (maxX - minX) / n;
 		float deltaY = (maxY - minY) / n;
