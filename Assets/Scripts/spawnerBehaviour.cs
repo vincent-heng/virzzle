@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+using System;
 
 public class spawnerBehaviour : MonoBehaviour {
 	public List<GameObject> spawns = new List<GameObject> ();
@@ -29,7 +30,8 @@ public class spawnerBehaviour : MonoBehaviour {
 		float deltaZ = (maxZ - minZ) / 2;
 		float radius = Mathf.Sqrt(deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ) /2;
 
-		Random.seed = 13;
+		UnityEngine.Random.seed = (int) DateTime.Now.Ticks & 0x0000FFFF;
+
 		for (int i = 0; i<nbItems; i++) {
 			float v;
 			float posX ;
@@ -39,7 +41,7 @@ public class spawnerBehaviour : MonoBehaviour {
 			Vector3 posVecteur;
 
 			do{				
-				v = Random.value * 100;
+				v = UnityEngine.Random.value * 100;
 				int c = Mathf.RoundToInt(v) % (2*n*n) +1;
 				posX = minX + deltaX/2 + ((c-1)%n) * deltaX;
 				posY = minY + deltaY/2 + (c/n) * deltaY;

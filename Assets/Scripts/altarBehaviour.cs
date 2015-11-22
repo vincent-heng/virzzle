@@ -1,15 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum lockColor
+{
+	blue,
+	red,
+	green,
+	yellow
+}
+
 public class altarBehaviour : MonoBehaviour {
 
-	public enum lockColor
-	{
-		blue,
-		red,
-		green,
-		yellow
-	}
+	public AudioSource source;
 
 	int unlockedCounter = 0;
 	private int[] unlockedOrder = new int[4]{-1,-1,-1,-1};
