@@ -4,6 +4,7 @@ using System.Collections;
 public class LockBehaviour : MonoBehaviour {
 	public GameObject key;
 	public GameObject door;
+	private bool isLocked = true;
 
 	void OnCollisionEnter( Collision col)
 	{
@@ -16,9 +17,16 @@ public class LockBehaviour : MonoBehaviour {
 	// a modifier plus tard
 	public void tryToOpen (GameObject o){
 		if (key.Equals (o)) {
-			door.GetComponent<doorBehavior>().unlockDoor();
+			isLocked = false;
+			GameObject.Find ("Player").GetComponent<playerBehaviour>().handedObject = null;
+			o.SetActive(false);
+			//animation
 		} else {
 
 		}
+	}
+
+	public bool isLockUnlocked(){
+		return !isLocked;
 	}
 }
