@@ -7,7 +7,8 @@ public class playerBehaviour : MonoBehaviour {
 	public float dropRotationForce;
 	public GameObject handedObject;
 	public bool triggeredWithKeyboard;
-	private GameObject centerEyeAnchor;
+    private bool canGrab = true;
+    private GameObject centerEyeAnchor;
 	private GameObject visor;
 	private Vector3 lastVisorPosition;
 
@@ -46,32 +47,36 @@ public class playerBehaviour : MonoBehaviour {
 	/// </summary>
 	/// <returns><c>true</c>, if item was taken, <c>false</c> otherwise.</returns>
 	private bool takeItem() {
-		if (handedObject != null) {
-			return true; // Already handing an item
-		}
-		RaycastHit hit;
-		Vector3 playerOrientation = getCenterEyeAnchor().transform.forward;
-		Ray playerRay = new Ray(transform.position, playerOrientation);
-		if (Physics.Raycast (playerRay, out hit, armLength)) {
-			Collider col = hit.collider;
-			if (col.tag == "key" || col.tag == "randomItem") {
-				handedObject = col.gameObject;
+            if (handedObject != null)
+            {
+                return true; // Already handing an item
+            }
+            RaycastHit hit;
+            Vector3 playerOrientation = getCenterEyeAnchor().transform.forward;
+            Ray playerRay = new Ray(transform.position, playerOrientation);
+            if (Physics.Raycast(playerRay, out hit, armLength))
+            {
+                Collider col = hit.collider;
+                if (col.tag == "key" || col.tag == "randomItem")
+                {
+                    handedObject = col.gameObject;
 
-				Transform parent = getVisor().transform;
-				handedObject.transform.SetParent(parent, true);
-				handedObject.GetComponent<Rigidbody>().isKinematic = true;
-				float forwardSizeMod = col.transform.lossyScale.z * 13;
-				float forwardDecalage = -7f + forwardSizeMod;
-				float upSizeMod = col.transform.lossyScale.y * -11;
-				float upDecalage = -1.5f + upSizeMod;
-				handedObject.transform.localPosition = centerEyeAnchor.transform.forward*forwardDecalage + centerEyeAnchor.transform.up*upDecalage;
+                    Transform parent = getVisor().transform;
+                    handedObject.transform.SetParent(parent, true);
+                    handedObject.GetComponent<Rigidbody>().isKinematic = true;
+                    float forwardSizeMod = col.transform.lossyScale.z * 13;
+                    float forwardDecalage = -7f + forwardSizeMod;
+                    float upSizeMod = col.transform.lossyScale.y * -11;
+                    float upDecalage = -1.5f + upSizeMod;
+                    handedObject.transform.localPosition = centerEyeAnchor.transform.forward * forwardDecalage + centerEyeAnchor.transform.up * upDecalage;
 
-                soundMng.Play(soundManager.soundTypes.grabObject);
-				return true; // Just took an item
-			}
-		}
-		return false; // No item to take
-	}
+                    soundMng.Play(soundManager.soundTypes.grabObject);
+                    canGrab = false;
+                    return true; // Just took an item
+                }
+            }
+        return false; // No item to take
+    }
 
 	/// <summary>
 	/// Drops the item.
@@ -118,6 +123,27 @@ public class playerBehaviour : MonoBehaviour {
         float rightTrig = Input.GetAxisRaw("Right Trigger");
         float leftTrig = Input.GetAxisRaw("Left Trigger");
 
+        if (!canGrab)
+        {
+            if ( rightTrig == 0)
+            {
+                canGrab = true;
+                dropItem();
+            }else if (leftTrig == 1)
+            {
+                throwItem();
+            }
+        }
+        else
+        {
+            if (rightTrig == 1)
+            {
+                takeItem();
+            }
+
+        }
+        lastVisorPosition = getVisor().transform.position;
+        /*
 		if (Input.GetKeyDown (KeyCode.Space)) {
 			if (!takeItem ()) {
 				Debug.Log ("No item to catch...");
@@ -148,7 +174,6 @@ public class playerBehaviour : MonoBehaviour {
 			} else {
 				Debug.Log ("Nothing to drop...");
 			}
-		}
-		lastVisorPosition = getVisor().transform.position;
-	}
+		}*/
+    }
 }

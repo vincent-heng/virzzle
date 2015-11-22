@@ -765,6 +765,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6585986, guid: 3103903ffedfe76479dcb6c0d2545afa, type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3103903ffedfe76479dcb6c0d2545afa, type: 2}
   m_IsPrefabParent: 0
@@ -896,6 +900,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 11443258, guid: b710f9246228291449b48e1b4014c008, type: 2}
+      propertyPath: armLength
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b710f9246228291449b48e1b4014c008, type: 2}
   m_IsPrefabParent: 0
@@ -913,7 +921,7 @@ GameObject:
   - 54: {fileID: 2023278594}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: randomItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
