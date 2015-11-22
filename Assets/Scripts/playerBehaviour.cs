@@ -9,6 +9,7 @@ public class playerBehaviour : MonoBehaviour {
 	public bool triggeredWithKeyboard;
 	private GameObject centerEyeAnchor;
 	private GameObject visor;
+	private Vector3 lastVisorPosition;
 	private float rightTrig = Input.GetAxisRaw("Right Trigger");
 	private float leftTrig = Input.GetAxisRaw("Left Trigger");
 
@@ -77,7 +78,8 @@ public class playerBehaviour : MonoBehaviour {
 		Vector3 playerOrientation = getCenterEyeAnchor().transform.forward;
 		handedObject.transform.parent = null;
 		Rigidbody rgbd = handedObject.GetComponent<Rigidbody> ();
-		rgbd.AddForce (playerOrientation.normalized);
+		Vector3 momentum = (visor.transform.position - lastVisorPosition)*130000f*Time.deltaTime;
+		rgbd.AddForce (playerOrientation.normalized + momentum);
 		rgbd.AddTorque ((Vector3.right + Vector3.forward).normalized * dropRotationForce);
 		handedObject = null;
 		return true;
@@ -95,7 +97,8 @@ public class playerBehaviour : MonoBehaviour {
 		Vector3 playerOrientation = getCenterEyeAnchor().transform.forward;
 		handedObject.transform.parent = null;
 		Rigidbody rgbd = handedObject.GetComponent<Rigidbody> ();
-		rgbd.AddForce (playerOrientation.normalized * 70);
+		Vector3 momentum = (visor.transform.position - lastVisorPosition)*130000f*Time.deltaTime;
+		rgbd.AddForce (playerOrientation.normalized * 70 + momentum);
 		rgbd.AddTorque ((Vector3.right + Vector3.forward).normalized * dropRotationForce * 15);
 		handedObject = null;
 		return true;
@@ -125,5 +128,6 @@ public class playerBehaviour : MonoBehaviour {
 				Debug.Log ("Nothing to drop...");
 			}
 		}
+		lastVisorPosition = visor.transform.position;
 	}
 }
