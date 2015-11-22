@@ -164,7 +164,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 800dd50174c1d4146a2e8ec0953f2fbd, type: 3}
   - {fileID: 8300000, guid: 32cd4d27deec1ce4f866932ccf702e83, type: 3}
   - {fileID: 8300000, guid: 1865bef0e3fdfe846864d817554502a9, type: 3}
-  dropObject: []
+  dropObject:
+  - {fileID: 8300000, guid: 408c7c0282b458e41853afc7dd63e737, type: 3}
+  - {fileID: 8300000, guid: 5fe6a2e75f624dc4d9d2efa83f74c9cd, type: 3}
+  - {fileID: 8300000, guid: 2ef2e981ebbf20f488b20f14a849ab31, type: 3}
+  - {fileID: 8300000, guid: 28eaab461947caf428e783affc4440da, type: 3}
+  - {fileID: 8300000, guid: f5ced32a82c1ba34ab16af7b301a8c5d, type: 3}
   pushObject:
   - {fileID: 8300000, guid: 8af58a2c5312b4742ab7bd1e4fd859da, type: 3}
   - {fileID: 8300000, guid: 9ab55537bd430e04c898d250cd2aa31d, type: 3}

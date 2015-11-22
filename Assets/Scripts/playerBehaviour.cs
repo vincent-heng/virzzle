@@ -10,8 +10,9 @@ public class playerBehaviour : MonoBehaviour {
 	private GameObject centerEyeAnchor;
 	private GameObject visor;
 	private Vector3 lastVisorPosition;
-	private float rightTrig = Input.GetAxisRaw("Right Trigger");
-	private float leftTrig = Input.GetAxisRaw("Left Trigger");
+
+    //soundManager
+    soundManager soundMng;
 
 	/// <summary>
 	/// Gets the center eye anchor by memoization.
@@ -23,6 +24,11 @@ public class playerBehaviour : MonoBehaviour {
 		}
 		return centerEyeAnchor;
 	}
+
+    void Start()
+    {
+        soundMng = GameObject.Find("GameManager").GetComponent<soundManager>();
+    }
 
 	/// <summary>
 	/// Gets the visor by memoization.
@@ -60,6 +66,7 @@ public class playerBehaviour : MonoBehaviour {
 				float upDecalage = -1.5f + upSizeMod;
 				handedObject.transform.localPosition = centerEyeAnchor.transform.forward*forwardDecalage + centerEyeAnchor.transform.up*upDecalage;
 
+                soundMng.Play(soundManager.soundTypes.grabObject);
 				return true; // Just took an item
 			}
 		}
@@ -82,7 +89,8 @@ public class playerBehaviour : MonoBehaviour {
 		rgbd.AddForce (playerOrientation.normalized + momentum);
 		rgbd.AddTorque ((Vector3.right + Vector3.forward).normalized * dropRotationForce);
 		handedObject = null;
-		return true;
+        soundMng.Play(soundManager.soundTypes.dropObject);
+        return true;
 	}
 
 	/// <summary>
@@ -101,19 +109,31 @@ public class playerBehaviour : MonoBehaviour {
 		rgbd.AddForce (playerOrientation.normalized * 70 + momentum);
 		rgbd.AddTorque ((Vector3.right + Vector3.forward).normalized * dropRotationForce * 15);
 		handedObject = null;
-		return true;
+        soundMng.Play(soundManager.soundTypes.pushObject);
+        return true;
 	}
 	
 	void Update() {
-		if (Input.GetKeyDown (KeyCode.Space) || rightTrig == 1 ) {
+
+        float rightTrig = Input.GetAxisRaw("Right Trigger");
+        float leftTrig = Input.GetAxisRaw("Left Trigger");
+
+		if (Input.GetKeyDown (KeyCode.Space)) {
 			if (!takeItem ()) {
 				Debug.Log ("No item to catch...");
 			} else {
 				triggeredWithKeyboard = true;
 			}
 		}
+        if (rightTrig == 1)
+        {
+            if (!takeItem())
+            {
+                Debug.Log("No item to catch...");
+            }
+        }
 
-		if (Input.GetKeyDown (KeyCode.T) || (leftTrig == 1)) {
+        if (Input.GetKeyDown (KeyCode.T) || (leftTrig == 1)) {
 			if (!throwItem ()) {
 				Debug.Log ("No item to throw...");
 			} else {
@@ -124,10 +144,11 @@ public class playerBehaviour : MonoBehaviour {
 		if (Input.GetKeyUp (KeyCode.Space) || (rightTrig == 0 && handedObject != null && !triggeredWithKeyboard)) {
 			if (dropItem()) {
 				Debug.Log("Item dropped");
+                triggeredWithKeyboard = false;
 			} else {
 				Debug.Log ("Nothing to drop...");
 			}
 		}
-		lastVisorPosition = visor.transform.position;
+		lastVisorPosition = getVisor().transform.position;
 	}
 }

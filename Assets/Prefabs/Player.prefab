@@ -189,6 +189,7 @@ GameObject:
   - 114: {fileID: 11493978}
   - 54: {fileID: 5495192}
   - 135: {fileID: 13532828}
+  - 114: {fileID: 11443258}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -763,6 +764,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df9f338034892c44ebb62d97894772f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11443258
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 197970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00feb6af67643ff419582ec6941dc018, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  armLength: 20
+  dropRotationForce: 0
+  handedObject: {fileID: 0}
+  triggeredWithKeyboard: 0
 --- !u!114 &11478548
 MonoBehaviour:
   m_ObjectHideFlags: 1

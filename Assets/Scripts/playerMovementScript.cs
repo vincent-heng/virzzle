@@ -133,12 +133,9 @@ public class playerMovementScript : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        Debug.Log("triggerLeave");
         if (other.tag == "world")
         {
             m_currentTrig--;
-            //handleCapsuleCollider();
-            Debug.Log("decrement trig:" + m_currentTrig);
 
             if (m_currentTrig == 0)
             {
