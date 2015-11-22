@@ -12,7 +12,10 @@ public class playerBehaviour : MonoBehaviour {
 	private float rightTrig = Input.GetAxisRaw("Right Trigger");
 	private float leftTrig = Input.GetAxisRaw("Left Trigger");
 
-	/*Memoization*/
+	/// <summary>
+	/// Gets the center eye anchor by memoization.
+	/// </summary>
+	/// <returns>The center eye anchor.</returns>
 	private GameObject getCenterEyeAnchor() {
 		if (centerEyeAnchor == null) {
 			centerEyeAnchor = GameObject.Find ("CenterEyeAnchor");
@@ -20,18 +23,21 @@ public class playerBehaviour : MonoBehaviour {
 		return centerEyeAnchor;
 	}
 
-	/*Memoization*/
+	/// <summary>
+	/// Gets the visor by memoization.
+	/// </summary>
+	/// <returns>The visor.</returns>
 	private GameObject getVisor() {
 		if (visor == null) {
 			visor = GameObject.Find ("Visor");
 		}
 		return visor;
 	}
-
-
-	/**
-	 * Returns true if catching an item
-	 */
+	
+	/// <summary>
+	/// Takes the item.
+	/// </summary>
+	/// <returns><c>true</c>, if item was taken, <c>false</c> otherwise.</returns>
 	private bool takeItem() {
 		if (handedObject != null) {
 			return true; // Already handing an item
@@ -59,6 +65,10 @@ public class playerBehaviour : MonoBehaviour {
 		return false; // No item to take
 	}
 
+	/// <summary>
+	/// Drops the item.
+	/// </summary>
+	/// <returns><c>true</c>, if item was droped, <c>false</c> otherwise.</returns>
 	private bool dropItem() {
 		if (handedObject == null) {
 			return false;
@@ -73,6 +83,10 @@ public class playerBehaviour : MonoBehaviour {
 		return true;
 	}
 
+	/// <summary>
+	/// Throws the item.
+	/// </summary>
+	/// <returns><c>true</c>, if item was thrown, <c>false</c> otherwise.</returns>
 	private bool throwItem() {
 		if (handedObject == null) {
 			return false;
@@ -86,7 +100,7 @@ public class playerBehaviour : MonoBehaviour {
 		handedObject = null;
 		return true;
 	}
-
+	
 	void Update() {
 		if (Input.GetKeyDown (KeyCode.Space) || rightTrig == 1 ) {
 			if (!takeItem ()) {
