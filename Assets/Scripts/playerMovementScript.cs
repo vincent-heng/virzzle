@@ -10,8 +10,8 @@ public class playerMovementScript : MonoBehaviour
     public float p_rotationForce;
 
     //collision management
-    public int m_currentTrig = 0;
-    public int m_currentCol = 0;
+    int m_currentTrig = 0;
+    int m_currentCol = 0;
 
     //player orientation
     Transform m_playerOrientation;
@@ -24,12 +24,15 @@ public class playerMovementScript : MonoBehaviour
     public float p_timeInterval;
     public float p_roughThreshold;
 
+    //sound Integration
+    soundManager m_soundMng;
+
 
     void Start()
     {
 
         //maybe initialise the current trig there with a sphere cast
-
+        m_soundMng = GameObject.Find("GameManager").GetComponent<soundManager>();
         m_playerOrientation = GameObject.Find("CenterEyeAnchor").transform;
         m_playerRigidbody = GetComponent<Rigidbody>();
         m_orientAtBegin = m_playerOrientation.forward;
@@ -98,6 +101,7 @@ public class playerMovementScript : MonoBehaviour
     {
         if (col.gameObject.tag == "world")
         {
+            m_soundMng.Play(soundManager.soundTypes.impactPlayer);
             m_currentCol++;
             handleSphereCollider();
         }
@@ -138,6 +142,7 @@ public class playerMovementScript : MonoBehaviour
 
             if (m_currentTrig == 0)
             {
+                m_soundMng.Play(soundManager.soundTypes.wooshPlayer);
                 m_playerRigidbody.AddForce(m_playerOrientation.forward * p_takeOffForce);
             }
         }
