@@ -914,6 +914,7 @@ MonoBehaviour:
   armLength: 20
   dropRotationForce: 0
   handedObject: {fileID: 0}
+  triggeredWithKeyboard: 0
 --- !u!114 &1030504838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -968,6 +969,38 @@ Prefab:
     - target: {fileID: 11474896, guid: 9df048af4836fd14496554eb05f653c8, type: 2}
       propertyPath: nbItems
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 11474896, guid: 9df048af4836fd14496554eb05f653c8, type: 2}
+      propertyPath: coef.Array.data[0]
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 11474896, guid: 9df048af4836fd14496554eb05f653c8, type: 2}
+      propertyPath: coef.Array.data[1]
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 11474896, guid: 9df048af4836fd14496554eb05f653c8, type: 2}
+      propertyPath: coef.Array.data[2]
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 11474896, guid: 9df048af4836fd14496554eb05f653c8, type: 2}
+      propertyPath: minX
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11474896, guid: 9df048af4836fd14496554eb05f653c8, type: 2}
+      propertyPath: minZ
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11474896, guid: 9df048af4836fd14496554eb05f653c8, type: 2}
+      propertyPath: maxX
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11474896, guid: 9df048af4836fd14496554eb05f653c8, type: 2}
+      propertyPath: maxY
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11474896, guid: 9df048af4836fd14496554eb05f653c8, type: 2}
+      propertyPath: maxZ
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9df048af4836fd14496554eb05f653c8, type: 2}
