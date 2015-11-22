@@ -2,18 +2,31 @@
 using System.Collections;
 
 public class altarBehaviour : MonoBehaviour {
-	public GameObject redLock;
-	public GameObject blueLock;
-	public GameObject yellowLock;
-	public GameObject greenLock;
+
+	public enum lockColor
+	{
+		blue,
+		red,
+		green,
+		yellow
+	}
+
+	int unlockedCounter = 0;
+	private int[] unlockedOrder = new int[4]{-1,-1,-1,-1};
+
+	public void lockHasUnlocked(lockColor lck){
+		unlockedOrder [(int)lck] = unlockedCounter;
+		unlockedCounter++;
+	}
+
+	public bool allUnlocked(){
+		return unlockedCounter == 4;
+	}
+
+
 
 	// Update is called once per frame
 	void Update () {
-		if (redLock.GetComponent<LockBehaviour> ().isLockUnlocked ()
-		    && blueLock.GetComponent<LockBehaviour> ().isLockUnlocked ()
-		    && yellowLock.GetComponent<LockBehaviour> ().isLockUnlocked ()
-		    && greenLock.GetComponent<LockBehaviour> ().isLockUnlocked ()) {
-			print ("et c est la win");
-		}
+
 	}
 }
