@@ -3,17 +3,15 @@ using System.Collections;
 
 public class soundManager : MonoBehaviour
 {
-    /*public AudioClip[] blueCrystal;
-    public AudioClip[] blueCrystal;
-    public AudioClip[] blueCrystal;
-    public AudioClip[] blueCrystal;
-    public AudioClip[] blueCrystalImpact;
-    public AudioClip[] redCrystalImpact;
-    public AudioClip[] yellowCrystalImpact;
-    public AudioClip[] greenCrystalImpact;*/
-    /*public AudioClip[] openDoor;
-    public AudioClip[] closeDoor;
-    public AudioClip[] grab;*/
+    public enum lockColor
+    {
+        blue,
+        red,
+        green,
+        yellow
+    }
+
+
     public AudioClip[] impactJoueur;
     public AudioClip[] wooshJoueur;
 
@@ -30,6 +28,16 @@ public class soundManager : MonoBehaviour
     AudioSource wooshAudioSrc;
     AudioSource grabAudioSrc;
     AudioSource breathAudioSrc;
+
+    public AudioSource blueUnlock;
+    public AudioSource redUnlock;
+    public AudioSource yellowUnlock;
+    public AudioSource greenUnlock;
+
+    public AudioSource blueMusic;
+    public AudioSource redMusic;
+    public AudioSource greenMusic;
+    public AudioSource yellowMusic;
 
 
     public enum soundTypes
@@ -89,6 +97,55 @@ public class soundManager : MonoBehaviour
                 breathTimePassed = 0;
                 breathInterval = Random.Range(breathMinInterval, breathMaxInterval);
             }
+        }
+    }
+
+    public void handleCrystalUnlock( int[] order )
+    {
+        int lastUnlocked = -1;
+        for( int i =3; i >=0; i--)
+        {
+            if (lastUnlocked == -1 && order[i] != -1)
+                lastUnlocked = i;
+
+            int j = 3 - i;
+            int first = 3 - lastUnlocked;
+
+            switch (order[i])
+            {
+                case (int)lockColor.blue:
+                    blueUnlock.PlayDelayed(0.75f*(j-first));
+                    break;
+                case (int)lockColor.red:
+                    redUnlock.PlayDelayed(0.75f* (j - first));
+                    break;
+                case (int)lockColor.green:
+                    greenUnlock.PlayDelayed(0.75f* (j - first));
+                    break;
+                case (int)lockColor.yellow:
+                    yellowUnlock.PlayDelayed(0.75f* (j - first));
+                    break;
+            }
+        }
+        launchMusic(lastUnlocked);
+    }
+
+    void launchMusic(int i)
+    {
+        switch (i)
+        {
+            case (int)lockColor.blue:
+                blueMusic.Play();
+                break;
+            case (int)lockColor.red:
+                redMusic.Play();
+                break;
+            case (int)lockColor.green:
+                greenMusic.Play();
+                break;
+            case (int)lockColor.yellow:
+                yellowMusic.Play();
+                break;
         }
     }
 

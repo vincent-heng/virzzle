@@ -775,7 +775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00feb6af67643ff419582ec6941dc018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armLength: 20
+  armLength: 1
   dropRotationForce: 0
   handedObject: {fileID: 0}
   triggeredWithKeyboard: 0
