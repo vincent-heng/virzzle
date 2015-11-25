@@ -15,10 +15,6 @@ public class playerBehaviour : MonoBehaviour {
     //soundManager
     soundManager soundMng;
 
-	/// <summary>
-	/// Gets the center eye anchor by memoization.
-	/// </summary>
-	/// <returns>The center eye anchor.</returns>
 	private GameObject getCenterEyeAnchor() {
 		if (centerEyeAnchor == null) {
 			centerEyeAnchor = GameObject.Find ("CenterEyeAnchor");
@@ -31,10 +27,7 @@ public class playerBehaviour : MonoBehaviour {
         soundMng = GameObject.Find("GameManager").GetComponent<soundManager>();
     }
 
-	/// <summary>
-	/// Gets the visor by memoization.
-	/// </summary>
-	/// <returns>The visor.</returns>
+
 	private GameObject getVisor() {
 		if (visor == null) {
 			visor = GameObject.Find ("Visor");
@@ -42,10 +35,7 @@ public class playerBehaviour : MonoBehaviour {
 		return visor;
 	}
 	
-	/// <summary>
-	/// Takes the item.
-	/// </summary>
-	/// <returns><c>true</c>, if item was taken, <c>false</c> otherwise.</returns>
+
 	private bool takeItem() {
             if (handedObject != null)
             {
@@ -63,13 +53,14 @@ public class playerBehaviour : MonoBehaviour {
 
                     Transform parent = getVisor().transform;
                     handedObject.transform.SetParent(parent, true);
-                    handedObject.GetComponent<Rigidbody>().isKinematic = true;
+                    
                     float forwardSizeMod = col.transform.lossyScale.z * 13;
                     float forwardDecalage = -7f + forwardSizeMod;
                     float upSizeMod = col.transform.lossyScale.y * -11;
                     float upDecalage = -1.5f + upSizeMod;
                     handedObject.transform.localPosition = centerEyeAnchor.transform.forward * forwardDecalage + centerEyeAnchor.transform.up * upDecalage;
 
+                    //handedObject.GetComponent<Rigidbody>().isKinematic = true;
                     soundMng.Play(soundManager.soundTypes.grabObject);
                     canGrab = false;
                     return true; // Just took an item
@@ -78,10 +69,7 @@ public class playerBehaviour : MonoBehaviour {
         return false; // No item to take
     }
 
-	/// <summary>
-	/// Drops the item.
-	/// </summary>
-	/// <returns><c>true</c>, if item was droped, <c>false</c> otherwise.</returns>
+
 	private bool dropItem() {
 		if (handedObject == null) {
 			return false;
@@ -98,10 +86,7 @@ public class playerBehaviour : MonoBehaviour {
         return true;
 	}
 
-	/// <summary>
-	/// Throws the item.
-	/// </summary>
-	/// <returns><c>true</c>, if item was thrown, <c>false</c> otherwise.</returns>
+
 	private bool throwItem() {
 		if (handedObject == null) {
 			return false;

@@ -9,9 +9,15 @@ public enum lockColor
 	yellow
 }
 
+
+
+
 public class altarBehaviour : MonoBehaviour {
 
 	public AudioSource source;
+
+
+    float timer = 0;
 
     soundManager soundMng;
 
@@ -22,7 +28,7 @@ public class altarBehaviour : MonoBehaviour {
 
     void Update()
     {
-        Debug.Log("FLOOD must delete theis function. exists juste for test;");
+        /*Debug.Log("FLOOD must delete theis function. exists juste for test;");
         if (Input.GetKeyDown(KeyCode.P))
         {
             lockHasUnlocked(lockColor.blue);
@@ -38,17 +44,38 @@ public class altarBehaviour : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.I))
         {
             lockHasUnlocked(lockColor.yellow);
-        }
+        }*/
+
+        timer += Time.deltaTime;
+        if (timer > 10)
+            lockHasUnlocked((int)lockColor.blue);
+        if (timer > 30)
+            lockHasUnlocked((int)lockColor.green);
+        if (timer > 60)
+            lockHasUnlocked((int)lockColor.yellow);
+        if (timer > 90)
+            lockHasUnlocked((int)lockColor.red);
     }
 
 	int unlockedCounter = 0;
 	private int[] unlockedOrder = new int[4]{-1,-1,-1,-1};
 
-	public void lockHasUnlocked(lockColor lck){
+
+
+
+	public void lockHasUnlocked(int lck){
         Debug.Log((int)lck);
 		unlockedOrder [unlockedCounter] = (int)lck;
         soundMng.handleCrystalUnlock(unlockedOrder);
 		unlockedCounter++;
+
+        if (allUnlocked())
+        {
+            //fin du game;
+            GameObject.Find("Player").GetComponent<playerMovementScript>().enabled = false;
+            GameObject.Find("Player").GetComponent<playerBehaviour2>().enabled = false;
+            Debug.Log("thanks for playing");
+        }
 	}
 
 	public bool allUnlocked(){

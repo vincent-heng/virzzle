@@ -189,7 +189,7 @@ GameObject:
   - 114: {fileID: 11493978}
   - 54: {fileID: 5495192}
   - 135: {fileID: 13532828}
-  - 114: {fileID: 11443258}
+  - 114: {fileID: 11489876}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -481,7 +481,8 @@ AudioSource:
   m_GameObject: {fileID: 175996}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24337998, guid: 6d91c0c289c5aab44b823d517fd4780f,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -551,7 +552,8 @@ AudioSource:
   m_GameObject: {fileID: 123506}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24309190, guid: 6d91c0c289c5aab44b823d517fd4780f,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: .370000005
@@ -621,7 +623,8 @@ AudioSource:
   m_GameObject: {fileID: 177762}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24354242, guid: 6d91c0c289c5aab44b823d517fd4780f,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -691,7 +694,8 @@ AudioSource:
   m_GameObject: {fileID: 194164}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24348668, guid: 6d91c0c289c5aab44b823d517fd4780f,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -764,21 +768,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df9f338034892c44ebb62d97894772f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11443258
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 197970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00feb6af67643ff419582ec6941dc018, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  armLength: 1
-  dropRotationForce: 0
-  handedObject: {fileID: 0}
-  triggeredWithKeyboard: 0
 --- !u!114 &11478548
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -801,6 +790,20 @@ MonoBehaviour:
   resetTrackerOnLoad: 1
   monoscopic: 0
   hdr: 0
+--- !u!114 &11489876
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 197970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbe8b8ab661ac8442b754144562bafa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handedObject: {fileID: 0}
+  armLength: 20
+  dropRotationForce: 15
 --- !u!114 &11493978
 MonoBehaviour:
   m_ObjectHideFlags: 1
